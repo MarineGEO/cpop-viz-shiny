@@ -21,6 +21,15 @@ wl_data <- read_csv(url("https://dl.dropboxusercontent.com/s/byukiwxjtxkw0nm/201
 names(wl_data) <- make.names(names(wl_data))
 
 
+loadSensorCSV <- function(fullurl){
+  sensorData <- readr::read_csv(url(fullurl)) # loads a CSV file from a publicly hosted dataset (ie dropbox, github)
+  names(sensorData) <- make.names(names(sensorData)) # prettify the dataset column names (removes spaces + illegal characters)
+  return(sensorData)
+}
+
+# TODO allow user to define dataset name, URL, units?
+
+
 # Define UI for random distribution app ----
 ui <- fluidPage(
   
